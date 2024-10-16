@@ -28,7 +28,9 @@ export const getFashions = () => async (dispatch) => {console.log("hello");
   dispatch({ type: GET_FASHION_LOAD });
   console.log("hello");
   try {
-    const result = await axios.get("/api/Fashion/getFashions");
+    const result = await axios.get(
+      `${process.env.BACK_URI}/api/Fashion/getFashions`
+    );
     dispatch({ type: GET_FASHION_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_FASHION_FAIL, payload: error });
@@ -39,7 +41,7 @@ export const getFashionByCategory = (category) => async (dispatch) => {
   dispatch({ type: GET_FASHIONCATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `/api/Fashion/getFashionByCategory/${category}`
+      `${process.env.BACK_URI}/api/Fashion/getFashionByCategory/${category}`
     );
     dispatch({ type: GET_FASHIONCATEGORY_SUCCESS, payload: result.data });
     console.log("data" + result.data);
@@ -53,7 +55,7 @@ export const getFashionByCategorySubCategory = (category,subcategory) => async (
   dispatch({ type: GET_FASHIONCATEGORYSUBCATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `/api/Fashion/getFashionByCategoryAndSubcategory/${category}/${subcategory}`
+      `${process.env.BACK_URI}/api/Fashion/getFashionByCategoryAndSubcategory/${category}/${subcategory}`
     );
     dispatch({
       type: GET_FASHIONCATEGORYSUBCATEGORY_SUCCESS,
@@ -70,7 +72,10 @@ export const addFashion = (newFashion) => async (dispatch) => {
   console.log("Action", newFashion);
   dispatch({ type: ADD_FASHION_LOAD });
   try {
-    const result = await axios.post("/api/Fashion/addFashion", newFashion);
+    const result = await axios.post(
+      `${process.env.BACK_URI}/api/Fashion/addFashion`,
+      newFashion
+    );
     dispatch({ type: ADD_FASHION_SUCCESS, payload: result.data });
 
     //  dispatch(getCars());
@@ -84,7 +89,9 @@ export const addFashion = (newFashion) => async (dispatch) => {
     dispatch({ type: GET_FASHION_BYID_LOAD });
 
     try {
-      const result = await axios.get(`/api/Fashion/getFashionById/${id}`);
+      const result = await axios.get(
+        `${process.env.BACK_URI}/api/Fashion/getFashionById/${id}`
+      );
       dispatch({ type: GET_FASHION_BYID_SUCCESS, payload: result.data });
     } catch (error) {
       dispatch({ type: GET_FASHION_BYID_FAIL, payload: error });
@@ -95,7 +102,9 @@ export const addFashion = (newFashion) => async (dispatch) => {
       async (dispatch) => {
         dispatch({ type: DELETE_FASHION_BYID_LOAD });
         try {
-          const result = await axios.delete(`/api/Fashion/deleteFashion/${id}`);
+          const result = await axios.delete(
+            `${process.env.BACK_URI}/api/Fashion/deleteFashion/${id}`
+          );
           dispatch({
             type: DELETE_FASHION_BYID_SUCCESS,
             payload: result.data,
@@ -112,7 +121,7 @@ export const addFashion = (newFashion) => async (dispatch) => {
             dispatch({ type: EDIT_FASHION_LOAD });
             try {
               const result = await axios.put(
-                `/api/Fashion/editFashion/${id}`,
+                `${process.env.BACK_URI}/api/Fashion/editFashion/${id}`,
                 newCar
               );
               dispatch({ type: EDIT_FASHION_SUCCESS, payload: result.data });

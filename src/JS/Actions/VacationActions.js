@@ -25,7 +25,7 @@ export const getVacations = () => async (dispatch) => {
   dispatch({ type: GET_VACATION_LOAD });
   
   try {
-    const result = await axios.get("/api/Vacation/getVacations");
+    const result = await axios.get(`${process.env.BACK_URI}/api/Vacation/getVacations`);
     dispatch({ type: GET_VACATION_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_VACATION_FAIL, payload: error });
@@ -36,7 +36,7 @@ export const getVacationsByCategory = (category) => async (dispatch) => {
   dispatch({ type: GET_VACATIONCATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `/api/Vacation/getVacationByCategory/${category}`
+      `${process.env.BACK_URI}/api/Vacation/getVacationByCategory/${category}`
     );
     dispatch({ type: GET_VACATIONCATEGORY_SUCCESS, payload: result.data });
     console.log("data" + result.data);
@@ -49,7 +49,7 @@ export const addVacation = (newVacation) => async (dispatch) => {
   console.log("Action", newVacation);
   dispatch({ type: ADD_VACATION_LOAD });
   try {
-    const result = await axios.post("/api/Vacation/addVacation", newVacation);
+    const result = await axios.post(`${process.env.BACK_URI}/api/Vacation/addVacation`, newVacation);
     dispatch({ type: ADD_VACATION_SUCCESS, payload: result.data });
 
     //  dispatch(getCars());
@@ -61,7 +61,9 @@ export const addVacation = (newVacation) => async (dispatch) => {
    export const getVacationById = (id) => async (dispatch) => {
      dispatch({ type: GET_VACATION_BYID_LOAD });
      try {
-       const result = await axios.get(`/api/Vacation/getVacationById/${id}`);
+       const result = await axios.get(
+         `${process.env.BACK_URI}/api/Vacation/getVacationById/${id}`
+       );
        dispatch({ type: GET_VACATION_BYID_SUCCESS, payload: result.data });
      } catch (error) {
        dispatch({ type: GET_VACATION_BYID_FAIL, payload: error });
@@ -73,7 +75,7 @@ export const addVacation = (newVacation) => async (dispatch) => {
            dispatch({ type: DELETE_VACATION_BYID_LOAD });
            try {
              const result = await axios.delete(
-               `/api/Vacation/deleteVacation/${id}`
+               `${process.env.BACK_URI}/api/Vacation/deleteVacation/${id}`
              );
              dispatch({
                type: DELETE_VACATION_BYID_SUCCESS,
@@ -91,7 +93,7 @@ export const addVacation = (newVacation) => async (dispatch) => {
                 dispatch({ type: EDIT_VACATION_LOAD });
                 try {
                   const result = await axios.put(
-                    `/api/Vacation/editVacation/${id}`,
+                    `${process.env.BACK_URI}/api/Vacation/editVacation/${id}`,
                     newCar
                   );
                   dispatch({

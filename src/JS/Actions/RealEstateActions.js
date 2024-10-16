@@ -25,7 +25,7 @@ import axios from "axios";
 export const getRealEstates = () => async (dispatch) => {
   dispatch({ type: GET_REALESTATE_LOAD });
   try {
-    const result = await axios.get("/api/RealEstate/getRealEstates");
+    const result = await axios.get(`${process.env.BACK_URI}/api/RealEstate/getRealEstates`);
     dispatch({ type: GET_REALESTATE_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_REALESTATE_FAIL, payload: error });
@@ -38,7 +38,7 @@ export const getRealEstateByCategory = (category) => async (dispatch) => {
   dispatch({ type: GET_REALESTATECATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `/api/RealEstate/getRealEstatesByCategory/${category}`
+      `${process.env.BACK_URI}/api/RealEstate/getRealEstatesByCategory/${category}`
     );
     dispatch({ type: GET_REALESTATECATEGORY_SUCCESS, payload: result.data });
     console.log("data"+result.data);
@@ -54,7 +54,7 @@ export const addRealEstate =
     dispatch({ type: ADD_REALESTATE_LOAD });
     try {
       const result = await axios.post(
-        "/api/RealEstate/addRealEstate",
+        `${process.env.BACK_URI}/api/RealEstate/addRealEstate`,
         newRealEstate
       );
       dispatch({ type: ADD_REALESTATE_SUCCESS, payload: result.data });
@@ -68,7 +68,9 @@ export const addRealEstate =
   export const getRealEstateById = (id) => async (dispatch) => {
     dispatch({ type: GET_REALESTATE_BYID_LOAD });
     try {
-      const result = await axios.get(`/api/RealEstate/getRealEstateById/${id}`);
+      const result = await axios.get(
+        `${process.env.BACK_URI}/api/RealEstate/getRealEstateById/${id}`
+      );
       dispatch({ type: GET_REALESTATE_BYID_SUCCESS, payload: result.data });
     } catch (error) {
       dispatch({ type: GET_REALESTATE_BYID_FAIL, payload: error });
@@ -81,7 +83,7 @@ export const addRealEstate =
       dispatch({ type: DELETE_REALESTATE_BYID_LOAD });
       try {
         const result = await axios.delete(
-          `/api/RealEstate/deleteRealEstate/${id}`
+          `${process.env.BACK_URI}/api/RealEstate/deleteRealEstate/${id}`
         );
         dispatch({
           type: DELETE_REALESTATE_BYID_SUCCESS,
@@ -100,7 +102,7 @@ export const addRealEstate =
            dispatch({ type: EDIT_REALESTATE_LOAD });
            try {
              const result = await axios.put(
-               `/api/RealEstate/editRealEstate/${id}`,
+               `${process.env.BACK_URI}/api/RealEstate/editRealEstate/${id}`,
                newCar
              );
              dispatch({ type: EDIT_REALESTATE_SUCCESS, payload: result.data });

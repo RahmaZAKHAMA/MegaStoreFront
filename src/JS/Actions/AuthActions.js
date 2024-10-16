@@ -20,7 +20,10 @@ import {
 export const register = ({newUser, navigate}) => async (dispatch) => {
         dispatch({type: REGISTER_USER_LOAD})
     try {
-        let result = await axios.post('/api/auth/register', newUser) 
+        let result = await axios.post(
+          `${process.env.BACK_URI}/api/auth/register`,
+          newUser
+        ); 
         dispatch({type: REGISTER_USER_SUCCESS, payload: result.data})
         navigate('/')
 
@@ -34,7 +37,10 @@ export const register = ({newUser, navigate}) => async (dispatch) => {
 export const login = ({user, navigate}) => async (dispatch) => {
     dispatch({type: LOGIN_USER_LOAD})
 try {
-    let result = await axios.post('/api/auth/login', user) 
+    let result = await axios.post(
+      `${process.env.BACK_URI}/api/auth/login`,
+      user
+    ); 
     dispatch({type: LOGIN_USER_SUCCESS, payload: result.data})   
     navigate('/')   
 } catch (error) {
@@ -55,7 +61,10 @@ export const current = () => async (dispatch) => {
           headers: { Authorization: localStorage.getItem("token") },
         };
         console.log(config)
-    let result = await axios.get("/api/auth/current", config);
+    let result = await axios.get(
+      `${process.env.BACK_URI}/api/auth/current`,
+      config
+    );
     dispatch({ type: CURRENT_USER, payload: result.data });
   } catch (error) {
     console.log(error)
@@ -80,7 +89,7 @@ export const clearSuccessAuth = () => {
     dispatch({ type: GET_USER_BYID_LOAD });
 
     try {
-      const result = await axios.get(`/api/auth/getUserById/${id}`);
+      const result = await axios.get(`${process.env.BACK_URI}/api/auth/getUserById/${id}`);
       dispatch({ type: GET_USER_BYID_SUCCESS, payload: result.data });
        // dispatch(getFashionById(id));
     } catch (error) {
