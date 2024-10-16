@@ -40,7 +40,7 @@ export const getRealEstateByCategory = (category) => async (dispatch) => {
   dispatch({ type: GET_REALESTATECATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `${process.env.BACK_URI}/api/RealEstate/getRealEstatesByCategory/${category}`
+      `${process.env.REACT_APP_API_URL}/api/RealEstate/getRealEstatesByCategory/${category}`
     );
     dispatch({ type: GET_REALESTATECATEGORY_SUCCESS, payload: result.data });
     console.log("data"+result.data);
@@ -56,7 +56,7 @@ export const addRealEstate =
     dispatch({ type: ADD_REALESTATE_LOAD });
     try {
       const result = await axios.post(
-        `${process.env.BACK_URI}/api/RealEstate/addRealEstate`,
+        `${process.env.REACT_APP_API_URL}/api/RealEstate/addRealEstate`,
         newRealEstate
       );
       dispatch({ type: ADD_REALESTATE_SUCCESS, payload: result.data });
@@ -71,7 +71,7 @@ export const addRealEstate =
     dispatch({ type: GET_REALESTATE_BYID_LOAD });
     try {
       const result = await axios.get(
-        `${process.env.BACK_URI}/api/RealEstate/getRealEstateById/${id}`
+        `${process.env.REACT_APP_API_URL}/api/RealEstate/getRealEstateById/${id}`
       );
       dispatch({ type: GET_REALESTATE_BYID_SUCCESS, payload: result.data });
     } catch (error) {
@@ -85,7 +85,7 @@ export const addRealEstate =
       dispatch({ type: DELETE_REALESTATE_BYID_LOAD });
       try {
         const result = await axios.delete(
-          `${process.env.BACK_URI}/api/RealEstate/deleteRealEstate/${id}`
+          `${process.env.REACT_APP_API_URL}/api/RealEstate/deleteRealEstate/${id}`
         );
         dispatch({
           type: DELETE_REALESTATE_BYID_SUCCESS,
@@ -104,7 +104,7 @@ export const addRealEstate =
            dispatch({ type: EDIT_REALESTATE_LOAD });
            try {
              const result = await axios.put(
-               `${process.env.BACK_URI}/api/RealEstate/editRealEstate/${id}`,
+               `${process.env.REACT_APP_API_URL}/api/RealEstate/editRealEstate/${id}`,
                newCar
              );
              dispatch({ type: EDIT_REALESTATE_SUCCESS, payload: result.data });

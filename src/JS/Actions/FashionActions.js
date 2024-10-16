@@ -29,7 +29,7 @@ export const getFashions = () => async (dispatch) => {console.log("hello");
   console.log("hello");
   try {
     const result = await axios.get(
-      `${process.env.BACK_URI}/api/Fashion/getFashions`
+      `${process.env.REACT_APP_API_URL}/api/Fashion/getFashions`
     );
     dispatch({ type: GET_FASHION_SUCCESS, payload: result.data });
   } catch (error) {
@@ -41,7 +41,7 @@ export const getFashionByCategory = (category) => async (dispatch) => {
   dispatch({ type: GET_FASHIONCATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `${process.env.BACK_URI}/api/Fashion/getFashionByCategory/${category}`
+      `${process.env.REACT_APP_API_URL}/api/Fashion/getFashionByCategory/${category}`
     );
     dispatch({ type: GET_FASHIONCATEGORY_SUCCESS, payload: result.data });
     console.log("data" + result.data);
@@ -55,7 +55,7 @@ export const getFashionByCategorySubCategory = (category,subcategory) => async (
   dispatch({ type: GET_FASHIONCATEGORYSUBCATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `${process.env.BACK_URI}/api/Fashion/getFashionByCategoryAndSubcategory/${category}/${subcategory}`
+      `${process.env.REACT_APP_API_URL}/api/Fashion/getFashionByCategoryAndSubcategory/${category}/${subcategory}`
     );
     dispatch({
       type: GET_FASHIONCATEGORYSUBCATEGORY_SUCCESS,
@@ -73,7 +73,7 @@ export const addFashion = (newFashion) => async (dispatch) => {
   dispatch({ type: ADD_FASHION_LOAD });
   try {
     const result = await axios.post(
-      `${process.env.BACK_URI}/api/Fashion/addFashion`,
+      `${process.env.REACT_APP_API_URL}/api/Fashion/addFashion`,
       newFashion
     );
     dispatch({ type: ADD_FASHION_SUCCESS, payload: result.data });
@@ -90,7 +90,7 @@ export const addFashion = (newFashion) => async (dispatch) => {
 
     try {
       const result = await axios.get(
-        `${process.env.BACK_URI}/api/Fashion/getFashionById/${id}`
+        `${process.env.REACT_APP_API_URL}/api/Fashion/getFashionById/${id}`
       );
       dispatch({ type: GET_FASHION_BYID_SUCCESS, payload: result.data });
     } catch (error) {
@@ -103,7 +103,7 @@ export const addFashion = (newFashion) => async (dispatch) => {
         dispatch({ type: DELETE_FASHION_BYID_LOAD });
         try {
           const result = await axios.delete(
-            `${process.env.BACK_URI}/api/Fashion/deleteFashion/${id}`
+            `${process.env.REACT_APP_API_URL}/api/Fashion/deleteFashion/${id}`
           );
           dispatch({
             type: DELETE_FASHION_BYID_SUCCESS,
@@ -121,7 +121,7 @@ export const addFashion = (newFashion) => async (dispatch) => {
             dispatch({ type: EDIT_FASHION_LOAD });
             try {
               const result = await axios.put(
-                `${process.env.BACK_URI}/api/Fashion/editFashion/${id}`,
+                `${process.env.REACT_APP_API_URL}/api/Fashion/editFashion/${id}`,
                 newCar
               );
               dispatch({ type: EDIT_FASHION_SUCCESS, payload: result.data });

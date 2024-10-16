@@ -21,7 +21,7 @@ export const register = ({newUser, navigate}) => async (dispatch) => {
         dispatch({type: REGISTER_USER_LOAD})
     try {
         let result = await axios.post(
-          `${process.env.BACK_URI}/api/auth/register`,
+          `${process.env.REACT_APP_API_URL}/api/auth/register`,
           newUser
         ); 
         dispatch({type: REGISTER_USER_SUCCESS, payload: result.data})
@@ -38,7 +38,7 @@ export const login = ({user, navigate}) => async (dispatch) => {
     dispatch({type: LOGIN_USER_LOAD})
 try {
     let result = await axios.post(
-      `${process.env.BACK_URI}/api/auth/login`,
+      `${process.env.REACT_APP_API_URL}/api/auth/login`,
       user
     ); 
     dispatch({type: LOGIN_USER_SUCCESS, payload: result.data})   
@@ -62,7 +62,7 @@ export const current = () => async (dispatch) => {
         };
         console.log(config)
     let result = await axios.get(
-      `${process.env.BACK_URI}/api/auth/current`,
+      `${process.env.REACT_APP_API_URL}/api/auth/current`,
       config
     );
     dispatch({ type: CURRENT_USER, payload: result.data });
@@ -89,7 +89,7 @@ export const clearSuccessAuth = () => {
     dispatch({ type: GET_USER_BYID_LOAD });
 
     try {
-      const result = await axios.get(`${process.env.BACK_URI}/api/auth/getUserById/${id}`);
+      const result = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/getUserById/${id}`);
       dispatch({ type: GET_USER_BYID_SUCCESS, payload: result.data });
        // dispatch(getFashionById(id));
     } catch (error) {

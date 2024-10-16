@@ -25,7 +25,7 @@ export const getHomeGardens = () => async (dispatch) => {console.log("hello");
   dispatch({ type: GET_HOMEGARDEN_LOAD });
   console.log("hello");
   try {
-    const result = await axios.get(`${process.env.BACK_URI}/api/HomeGarden/getHomeGardens`);
+    const result = await axios.get(`${process.env.REACT_APP_API_URL}/api/HomeGarden/getHomeGardens`);
     dispatch({ type: GET_HOMEGARDEN_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_HOMEGARDEN_FAIL, payload: error });
@@ -36,7 +36,7 @@ export const getHomeGardensByCategory = (category) => async (dispatch) => {
   dispatch({ type: GET_HOMEGARDENCATEGORY_LOAD });
   try {
     const result = await axios.get(
-      `${process.env.BACK_URI}/api/HomeGarden/getHomeGardenByCategory/${category}`
+      `${process.env.REACT_APP_API_URL}/api/HomeGarden/getHomeGardenByCategory/${category}`
     );
     dispatch({ type: GET_HOMEGARDENCATEGORY_SUCCESS, payload: result.data });
     console.log("datahomegardendecor" + result.data);
@@ -48,7 +48,7 @@ export const addHomeGarden = (newHG) => async (dispatch) => {
   console.log("Action", newHG);
   dispatch({ type: ADD_HOMEGARDEN_LOAD });
   try {
-    const result = await axios.post(`${process.env.BACK_URI}/api/HomeGarden/addHomeGarden`, newHG);
+    const result = await axios.post(`${process.env.REACT_APP_API_URL}/api/HomeGarden/addHomeGarden`, newHG);
     dispatch({ type: ADD_HOMEGARDEN_SUCCESS, payload: result.data });
 
     //  dispatch(getCars());
@@ -61,7 +61,7 @@ export const addHomeGarden = (newHG) => async (dispatch) => {
 
     try {
       const result = await axios.get(
-        `${process.env.BACK_URI}/api/HomeGarden/getHomeGardenById/${id}`
+        `${process.env.REACT_APP_API_URL}/api/HomeGarden/getHomeGardenById/${id}`
       );
       dispatch({ type: GET_HOMEGARDEN_BYID_SUCCESS, payload: result.data });
     } catch (error) {
@@ -76,7 +76,7 @@ export const addHomeGarden = (newHG) => async (dispatch) => {
         dispatch({ type: DELETE_HOMEGARDEN_BYID_LOAD });
         try {
           const result = await axios.delete(
-            `${process.env.BACK_URI}/api/HomeGarden/deleteHomeGarden/${id}`
+            `${process.env.REACT_APP_API_URL}/api/HomeGarden/deleteHomeGarden/${id}`
           );
           dispatch({
             type: DELETE_HOMEGARDEN_BYID_SUCCESS,
@@ -94,7 +94,7 @@ export const addHomeGarden = (newHG) => async (dispatch) => {
            dispatch({ type: EDIT_HOMEGARDEN_LOAD });
            try {
              const result = await axios.put(
-               `${process.env.BACK_URI}/api/HomeGarden/editHomeGarden/${id}`,
+               `${process.env.REACT_APP_API_URL}/api/HomeGarden/editHomeGarden/${id}`,
                newCar
              );
              dispatch({ type: EDIT_HOMEGARDEN_SUCCESS, payload: result.data });

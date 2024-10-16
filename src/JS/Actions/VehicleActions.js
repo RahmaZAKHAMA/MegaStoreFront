@@ -27,7 +27,7 @@ import axios from "axios";
 export const getVehicles = () => async (dispatch) => {
   dispatch({ type: GET_VEHICLES_LOAD });
   try {
-    const result = await axios.get(`${process.env.BACK_URI}/api/Vehicles/getVehicles`);
+    const result = await axios.get(`${process.env.REACT_APP_API_URL}/api/Vehicles/getVehicles`);
     dispatch({ type: GET_VEHICLES_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_VEHICLES_FAIL, payload: error });
@@ -38,7 +38,7 @@ export const getVehiclesByCategorySubCategory =
     dispatch({ type: GET_VEHICLESCATEGORYSUBCATEGORY_LOAD });
     try {
       const result = await axios.get(
-        `${process.env.BACK_URI}/api/Vehicles/getVehicleByCategoryAndSubcategory/${category}/${subcategory}`
+        `${process.env.REACT_APP_API_URL}/api/Vehicles/getVehicleByCategoryAndSubcategory/${category}/${subcategory}`
       );
       dispatch({
         type: GET_VEHICLESCATEGORYSUBCATEGORY_SUCCESS,
@@ -55,7 +55,7 @@ export const getVehiclesByCategorySubCategory =
     dispatch({ type: GET_VEHICLESCATEGORY_LOAD });
     try {
       const result = await axios.get(
-        `${process.env.BACK_URI}/api/Vehicles/getVehicleByCategory/${category}`
+        `${process.env.REACT_APP_API_URL}/api/Vehicles/getVehicleByCategory/${category}`
       );
       dispatch({ type: GET_VEHICLESCATEGORY_SUCCESS, payload: result.data });
       console.log("data" + result.data);
@@ -68,7 +68,7 @@ export const getVehiclesByCategorySubCategory =
     console.log("Action", newVehicle);
     dispatch({ type: ADD_VEHICLES_LOAD });
     try {
-      const result = await axios.post(`${process.env.BACK_URI}/api/Vehicles/addVehicle`, newVehicle);
+      const result = await axios.post(`${process.env.REACT_APP_API_URL}/api/Vehicles/addVehicle`, newVehicle);
       dispatch({ type: ADD_VEHICLES_SUCCESS, payload: result.data });
 
       //  dispatch(getCars());
@@ -81,7 +81,7 @@ export const getVehiclesByCategorySubCategory =
      dispatch({ type: GET_VEHICLE_BYID_LOAD });
      try {
        const result = await axios.get(
-         `${process.env.BACK_URI}/api/Vehicles/getVehiclesById/${id}`
+         `${process.env.REACT_APP_API_URL}/api/Vehicles/getVehiclesById/${id}`
        );
        dispatch({ type: GET_VEHICLE_BYID_SUCCESS, payload: result.data });
      } catch (error) {
@@ -95,7 +95,7 @@ export const getVehiclesByCategorySubCategory =
            dispatch({ type: DELETE_VEHICLES_BYID_LOAD });
            try {
              const result = await axios.delete(
-               `${process.env.BACK_URI}/api/Vehicles/deleteVehicles/${id}`
+               `${process.env.REACT_APP_API_URL}/api/Vehicles/deleteVehicles/${id}`
              );
              dispatch({
                type: DELETE_VEHICLES_BYID_SUCCESS,
@@ -113,7 +113,7 @@ export const getVehiclesByCategorySubCategory =
        dispatch({ type: EDIT_VEHICLES_LOAD });
        try {
          const result = await axios.put(
-           `${process.env.BACK_URI}/api/Vehicles/editVehicles/${id}`,
+           `${process.env.REACT_APP_API_URL}/api/Vehicles/editVehicles/${id}`,
            newCar
          );
          dispatch({ type: EDIT_VEHICLES_SUCCESS, payload: result.data });
