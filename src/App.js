@@ -78,7 +78,7 @@ function App() {
    const isAuth = useSelector((state) => state.AuthReducer.isAuth);
 
    const user = useSelector((state) => state.AuthReducer.user);
-
+ 
    const authErrors = useSelector((state) => state.AuthReducer.errors);
 
    const authSuccess = useSelector((state) => state.AuthReducer.success);
@@ -107,7 +107,7 @@ function App() {
         <Route path="/AddNew" element={<AddNew />} />
         <Route path="/Message" element={<Message />} />
         <Route path="/Subscribe" element={<Subscribe />} />
-        ////////Real Estate routes
+        {/*Real Estate routes*/}
         <Route path="/Real-Estate" element={<RealEstate />} />
         <Route path="/Real-Estate-villa" element={<RealEstateVilla />} />
         <Route path="/Real-Estate-Ground" element={<RealEstateGround />} />
@@ -120,7 +120,7 @@ function App() {
           path="/Real-Estate-Commercial"
           element={<RealEstateCommercial />}
         />
-        ////////Vehicles routes
+        
         <Route path="/Vehicles" element={<Vehicles />} />
         <Route path="/Vehicles-Cars" element={<VehiclesCars />} />
         <Route
@@ -163,7 +163,7 @@ function App() {
         <Route path="/Vehicles-Boating" element={<VehiclesBoating />} />
         <Route path="/Vehicles-Bikes" element={<VehiclesBikes />} />
         <Route path="/Vehicles-Others" element={<VehiclesOthers />} />
-        ////////Fashion routes
+        
         <Route path="/Fashion" element={<Fashion />} />
         <Route path="/Fashion-Clothes" element={<FashionClothes />} />
         <Route path="/Fashion-Clothes-Man" element={<FashionClothesMan />} />
@@ -208,7 +208,7 @@ function App() {
           path="/Fashion-AccessoriesLuggage-Kids"
           element={<FashionAccessoriesLuggageKids />}
         />
-        ////////Home&Garden routes
+        
         <Route path="/Home&Garden" element={<HomeGarden />} />
         <Route path="/HomeGarden-Household" element={<HomeGardenHousehold />} />
         <Route
@@ -226,13 +226,13 @@ function App() {
         />
         <Route path="/HomeGarden-DIY" element={<HomeGardenDIY />} />
         <Route path="/HomeGarden-Gardening" element={<HomeGardenGardening />} />
-        ////////Vacation routes
+        
         <Route path="/Vacation" element={<Vacation />} />
         <Route path="/Vacation-FlashSale" element={<VacationFlashSale />} />
         <Route path="/Vacation-Apartment" element={<VacationApartment />} />
         <Route path="/Vacation-Villa" element={<VacationVilla />} />
         <Route path="/Vacation-Hotel" element={<VacationHotel />} />
-        // Error Page route
+        
         <Route path="/*" element={<ErrorPage />} />
         <Route
           path="/ProductListSearched/:searchTerm"
