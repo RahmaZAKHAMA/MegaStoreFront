@@ -25,7 +25,9 @@ import axios from "axios";
 export const getRealEstates = () => async (dispatch) => {
   dispatch({ type: GET_REALESTATE_LOAD });
   try {
-    const result = await axios.get(`${process.env.BACK_URI}/api/RealEstate/getRealEstates`);
+    const result = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/RealEstate/getRealEstates`
+    );
     dispatch({ type: GET_REALESTATE_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_REALESTATE_FAIL, payload: error });
