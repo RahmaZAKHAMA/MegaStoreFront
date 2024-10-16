@@ -152,8 +152,10 @@ console.log("real", realestate);
 console.log("productt", product);
 //if(product!=null) {  console.log("rerererereretetetet", product.admin);dispatch(getUserById(product.admin));}
 console.log("AdminAnnounce", AdminAnnounce);
- 
-
+if(user)
+ console.log("user.id",user._id);
+if(product)
+console.log(product.admin);
   return (
     <div className="md:px-16 mt-5">
       {AdminAnnounce && (
@@ -210,21 +212,24 @@ console.log("AdminAnnounce", AdminAnnounce);
                 <LeftOutlined />
               </button>
 
-              {isAuth == true && user._id == product.admin ? (
+              {isAuth === true &&
+              user &&
+              product &&
+              user._id == product.admin ? (
                 <>
-                  <Button
-                    gradientMonochrome="failure"
+                  <button
+                    className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-all duration-300 ease-in-out"
                     onClick={() => setshowModalDelete(true)}
                   >
                     Delete
-                  </Button>
+                  </button>
 
-                  <Button
-                    gradientMonochrome="purple"
+                  <button
+                    className="px-4 py-2 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition-all duration-300 ease-in-out"
                     onClick={() => setshowModalEdit(true)}
                   >
                     EDIT
-                  </Button>
+                  </button>
                 </>
               ) : null}
             </div>

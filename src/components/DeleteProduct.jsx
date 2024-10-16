@@ -82,9 +82,13 @@ const handleonClose = () => {
               Are you sure you want to delete this product?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={() => handleClose()}>
+              <button
+                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-all duration-300 ease-in-out"
+                color="failure"
+                onClick={() => handleClose()}
+              >
                 {"Yes, I'm sure"}
-              </Button>
+              </button>
               <Button color="gray" onClick={() => handleonClose()}>
                 No, cancel
               </Button>
